@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Bitter&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+    <title>Star Wars Front End Workshop</title>
+  </head>
+  <body>
+    <h1>STAR WARS API</h1>
+    <div id="data-container">
+      <div>
+        <h3>PEOPLE</h3>
+        <input
+          type="text"
+          id="people-input"
+          onkeyup="filter('people')"
+          placeholder="Search people"
+          title="Type in a name"
+        />
+        <p id="people-stats"></p>
+        <div id="people-list"></div>
+      </div>
+      <div>
+        <h3>FILMS</h3>
+        <input
+          type="text"
+          id="films-input"
+          onkeyup="filter('films')"
+          placeholder="Search films"
+          title="Type in a name"
+        />
+        <p id="films-stats"></p>
+        <div id="films-list"></div>
+      </div>
+      <div>
+        <h3>STARSHIPS</h3>
+        <input
+          type="text"
+          id="starships-input"
+          onkeyup="filter('starships')"
+          placeholder="Search starships"
+          title="Type in a name"
+        />
+        <p id="starships-stats"></p>
+        <div id="starships-list"></div>
+      </div>
+      <div>
+        <h3>VEHICLES</h3>
+        <input
+          type="text"
+          id="vehicles-input"
+          onkeyup="filter('vehicles')"
+          placeholder="Search for vehicles"
+          title="Type in a name"
+        />
+        <p id="vehicles-stats"></p>
+        <div id="vehicles-list"></div>
+      </div>
+    </div>
+  </body>
+</html>

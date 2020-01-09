@@ -1,0 +1,33 @@
+body {
+  font-family: 'Bitter', serif;
+  background-color: rgb(91, 96, 112);
+  color: rgb(204, 86, 86);
+}
+h1 {
+  color: yellow;
+  text-shadow: 1px 1px 2px rgb(107, 102, 102);
+}
+
+input {
+  border-radius: 5px;
+  border: none;
+  background-image: none;
+  background-color: white;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+#data-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.entry {
+  background-color: rgb(51, 51, 51);
+  color: whitesmoke;
+  border-radius: 6px;
+  margin: 5px;
+  padding: 7px;
+}
