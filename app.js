@@ -1,3 +1,24 @@
+function formatDate(date) {
+  const year = date[0] + date[1] + date[2] + date[3];
+  const month = Number(date[5] + date[6]) - 1;
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'Dececember'
+  ];
+  const day = date[8] + date[9];
+  const newDate = `${months[month]} ${day}, ${year}`;
+  return newDate;
+}
 function renderData(colType, data) {
   let col = document.querySelector(`#${colType}-list`);
   data.results.forEach(datum => {
@@ -10,7 +31,7 @@ function renderData(colType, data) {
                   colType === 'people'
                     ? `appeared ${datum.films.length} in films`
                     : colType === 'films'
-                    ? `released on ${datum.release_date}`
+                    ? `released on ${formatDate(datum.release_date)}`
                     : colType === 'starships'
                     ? datum.starship_class
                     : colType === 'vehicles'
