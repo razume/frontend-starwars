@@ -1,16 +1,35 @@
-body {
-  font-family: 'Bitter', serif;
-  background-color: rgb(91, 96, 112);
-  color: rgb(204, 86, 86);
+@font-face {
+  font-family: 'star_jediregular';
+  src: url('fonts/starjedi-webfont.woff2') format('woff2'),
+    url('fonts/starjedi-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-h1 {
-  color: yellow;
-  text-shadow: 1px 1px 2px rgb(107, 102, 102);
+@font-face {
+  font-family: 'star_jedi_hollowregular';
+  src: url('fonts/starjhol-webfont.woff2') format('woff2'),
+    url('fonts/starjhol-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  background-color: rgb(243, 243, 243);
+  color: rgb(255, 16, 16);
+  text-shadow: 1px 1px 2px rgba(107, 102, 102, 0.192);
+  text-align: center;
+}
+h3 {
+  font-family: 'Geostar Fill', cursive;
+  font-size: 20pt;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 input {
   border-radius: 5px;
-  border: none;
+  border: 2px solid rgb(47, 154, 255);
   background-image: none;
   background-color: white;
   -webkit-box-shadow: none;
@@ -24,10 +43,47 @@ input {
   justify-content: space-evenly;
 }
 
+.column {
+  background-color: white;
+  padding: 1vh;
+  justify-content: center;
+  border-radius: 5px;
+  width: 17rem;
+}
+
 .entry {
-  background-color: rgb(51, 51, 51);
-  color: whitesmoke;
+  background-color: rgb(243, 241, 241);
+  color: rgb(29, 28, 28);
   border-radius: 6px;
-  margin: 5px;
+  margin-bottom: 15px;
   padding: 7px;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+#lightsaber {
+  color: rgb(255, 230, 0);
+  text-shadow: 1px 1px 2px rgb(107, 102, 102);
+  font-family: 'star_jediregular';
+  font-size: 20pt;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+}
+#handle {
+  background-color: rgb(46, 46, 46);
+  flex: 1;
+  text-align: center;
+}
+#blade {
+  background-color: rgb(247, 20, 20);
+  flex: 3;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 2.8px 2.2px rgba(182, 34, 34, 0.034),
+    0 6.7px 5.3px rgba(145, 20, 20, 0.363),
+    0 12.5px 10px rgba(197, 17, 17, 0.06),
+    0 22.3px 17.9px rgba(211, 13, 13, 0.363),
+    0 41.8px 33.4px rgba(170, 8, 8, 0.086), 0 100px 80px rgba(236, 12, 12, 0.12);
 }

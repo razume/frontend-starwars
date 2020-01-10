@@ -14,7 +14,7 @@ function renderData(colType, data) {
                     : colType === 'starships'
                     ? datum.starship_class
                     : colType === 'vehicles'
-                    ? `Manufactured by <br>${datum.manufacturer}`
+                    ? `Manufactured by ${datum.manufacturer}`
                     : ''
                 }</p>
             </div>
@@ -38,6 +38,12 @@ function renderStats(inputType, data) {
   const statsNode = document.querySelector(`#${inputType}-stats`);
   const count = document.querySelector(`#${inputType}-list`).childElementCount;
   statsNode.innerText = ` viewing ${count} of ${data.count}`;
+}
+
+function loadMore(inputType, data) {
+  if (data.count > 10) {
+    // insert a button
+  }
 }
 
 async function fetchData() {

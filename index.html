@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
-      href="https://fonts.googleapis.com/css?family=Bitter&display=swap"
+      href="https://fonts.googleapis.com/css?family=Heebo|Geostar+Fill|Libre+Barcode+128+Text|Montserrat+Subrayada&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -13,10 +13,14 @@
     <title>Star Wars Front End Workshop</title>
   </head>
   <body>
-    <h1>STAR WARS API</h1>
+    <div id="lightsaber">
+      <div id="handle">STARWARS DATABASE</div>
+      <div id="blade"></div>
+    </div>
+
     <div id="data-container">
-      <div>
-        <h3>PEOPLE</h3>
+      <div class="column">
+        <h3>PE0PLE</h3>
         <input
           type="text"
           id="people-input"
@@ -27,8 +31,8 @@
         <p id="people-stats"></p>
         <div id="people-list"></div>
       </div>
-      <div>
-        <h3>FILMS</h3>
+      <div class="column">
+        <h3>F1LMS</h3>
         <input
           type="text"
           id="films-input"
@@ -39,7 +43,7 @@
         <p id="films-stats"></p>
         <div id="films-list"></div>
       </div>
-      <div>
+      <div class="column">
         <h3>STARSHIPS</h3>
         <input
           type="text"
@@ -51,7 +55,7 @@
         <p id="starships-stats"></p>
         <div id="starships-list"></div>
       </div>
-      <div>
+      <div class="column">
         <h3>VEHICLES</h3>
         <input
           type="text"
