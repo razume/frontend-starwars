@@ -72,9 +72,11 @@ input {
   margin-bottom: 2rem;
 }
 #handle {
-  background-color: rgb(46, 46, 46);
+  background-color: rgb(73, 73, 73);
   flex: 1;
   text-align: center;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 7px;
 }
 #blade {
   background-color: rgb(247, 20, 20);
