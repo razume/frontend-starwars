@@ -75,7 +75,6 @@ function renderData(colType, data) {
         `;
   });
   renderStats(colType, data);
-  addLoadMoreButton(colType, data);
 }
 
 /************************************************************************************
@@ -110,17 +109,25 @@ function renderStats(inputType, data) {
 
 // Adds a Load More button if data.length is > 10
 function addLoadMoreButton(inputType, data) {
-  if (data.count > 10) {
-    const moreData = document.createElement('BUTTON');
-    const buttonLabel = document.createTextNode('Load More');
-    moreData.appendChild(buttonLabel);
-    document.querySelector(`#more-${inputType}`).appendChild(moreData);
+  const count = document.querySelector(`#${inputType}-list`).childElementCount;
+  if (data.count > 10 && count < data.count) {
+    const moreDataButton = document.querySelector(`#more-${inputType}`);
+    moreDataButton.style.display = 'block';
+    document
+      .querySelector(`#more-${inputType}`)
+      .addEventListener('click', () => {
+        fetchByURL(data.next).then(nextData => {
+          data = nextData;
+          renderData(inputType, data);
+        });
+      });
   }
 }
 
-function loadMore() {
-  // when a load more button is clicked,
-  // fetch(data.next), then render it
+async function fetchByURL(url) {
+  const response = await fetch(url);
+  const responseJSON = await response.json();
+  return responseJSON;
 }
 
 /***************************************************************
@@ -150,7 +157,12 @@ async function fetchData() {
   renderData('films', filmsJSON);
   renderData('starships', starshipsJSON);
   renderData('vehicles', vehiclesJSON);
+
+  addLoadMoreButton('people', peopleJSON);
+  addLoadMoreButton('films', filmsJSON);
+  addLoadMoreButton('starships', starshipsJSON);
+  addLoadMoreButton('vehicles', vehiclesJSON);
 }
 
-// everything is called with a simple fetchData()
+// everything is called with fetchData()
 fetchData();

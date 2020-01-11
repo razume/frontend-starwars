@@ -1,6 +1,7 @@
 :root {
   --font-color: rgb(88, 88, 88);
   --bg-color: rgb(243, 243, 243);
+  --col-head-color: rgba(0, 102, 255, 0.123);
   --column-color: rgb(255, 255, 255);
   --entry-color: rgb(243, 241, 241);
   --handle-color: rgb(112, 111, 111);
@@ -17,6 +18,7 @@
 [data-theme='dark'] {
   --font-color: #e0e0e0;
   --bg-color: #222225;
+  --col-head-color: rgba(255, 0, 0, 0.253);
   --column-color: rgba(43, 43, 43, 0.562);
   --entry-color: rgba(27, 27, 27, 0.404);
   --handle-color: rgba(197, 194, 194, 0.877);
@@ -82,10 +84,16 @@ input {
 }
 
 .col-head {
-  border: 2px solid rgba(0, 102, 255, 0.123);
+  border: 2px solid var(--col-head-color);
   border-radius: 5px;
-  height: 13rem;
+  height: 14rem;
   margin-bottom: 8px;
+}
+.load-more-button {
+  margin: auto;
+  width: 30%;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .entry {
