@@ -17,54 +17,74 @@
       <div id="handle">STARWARS DATABASE</div>
       <div id="blade"></div>
     </div>
+    <p id="darkside-query">Prefer the Dark Side?</p>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" />
+        <div class="slider round"></div>
+      </label>
+    </div>
+    <br />
 
     <div id="data-container">
       <div class="column">
-        <h3>PE0PLE</h3>
-        <input
-          type="text"
-          id="people-input"
-          onkeyup="filter('people')"
-          placeholder="Search people"
-          title="Type in a name"
-        />
-        <p id="people-stats"></p>
+        <div class="col-head">
+          <h3>PEOPLE</h3>
+          <input
+            type="text"
+            id="people-input"
+            onkeyup="filter('people')"
+            placeholder="Search people"
+            title="Type in a name"
+          />
+          <p id="people-stats"></p>
+          <div id="more-people"></div>
+        </div>
         <div id="people-list"></div>
       </div>
       <div class="column">
-        <h3>F1LMS</h3>
-        <input
-          type="text"
-          id="films-input"
-          onkeyup="filter('films')"
-          placeholder="Search films"
-          title="Type in a name"
-        />
-        <p id="films-stats"></p>
+        <div class="col-head">
+          <h3>FILMS</h3>
+          <input
+            type="text"
+            id="films-input"
+            onkeyup="filter('films')"
+            placeholder="Search films"
+            title="Type in a name"
+          />
+          <p id="films-stats"></p>
+          <div class="more-films"></div>
+        </div>
         <div id="films-list"></div>
       </div>
       <div class="column">
-        <h3>STARSHIPS</h3>
-        <input
-          type="text"
-          id="starships-input"
-          onkeyup="filter('starships')"
-          placeholder="Search starships"
-          title="Type in a name"
-        />
-        <p id="starships-stats"></p>
+        <div class="col-head">
+          <h3>STARSHIPS</h3>
+          <input
+            type="text"
+            id="starships-input"
+            onkeyup="filter('starships')"
+            placeholder="Search starships"
+            title="Type in a name"
+          />
+          <p id="starships-stats"></p>
+          <div id="more-starships"></div>
+        </div>
         <div id="starships-list"></div>
       </div>
       <div class="column">
-        <h3>VEHICLES</h3>
-        <input
-          type="text"
-          id="vehicles-input"
-          onkeyup="filter('vehicles')"
-          placeholder="Search for vehicles"
-          title="Type in a name"
-        />
-        <p id="vehicles-stats"></p>
+        <div class="col-head">
+          <h3>VEHICLES</h3>
+          <input
+            type="text"
+            id="vehicles-input"
+            onkeyup="filter('vehicles')"
+            placeholder="Search vehicles"
+            title="Type in a name"
+          />
+          <p id="vehicles-stats"></p>
+          <div id="more-vehicles"></div>
+        </div>
         <div id="vehicles-list"></div>
       </div>
     </div>

@@ -1,3 +1,35 @@
+:root {
+  --font-color: rgb(88, 88, 88);
+  --bg-color: rgb(243, 243, 243);
+  --column-color: rgb(255, 255, 255);
+  --entry-color: rgb(243, 241, 241);
+  --handle-color: rgb(112, 111, 111);
+  --handle-shadow: rgb(212, 209, 209);
+  --blade-bg: rgb(165, 224, 248);
+  --blade-border: rgb(30, 203, 255);
+  --blade-shadow1: rgba(71, 191, 238, 0.37);
+  --blade-shadow2: rgba(71, 191, 238, 0.35);
+  --blade-shadow3: rgba(71, 191, 238, 0.3);
+  --blade-shadow4: rgba(71, 191, 238, 0.25);
+  --blade-shadow5: rgba(71, 191, 238, 0.2);
+  --blade-shadow6: rgba(71, 191, 238, 0.15);
+}
+[data-theme='dark'] {
+  --font-color: #e0e0e0;
+  --bg-color: #222225;
+  --column-color: rgba(43, 43, 43, 0.562);
+  --entry-color: rgba(27, 27, 27, 0.404);
+  --handle-color: rgba(197, 194, 194, 0.877);
+  --handle-shadow: rgb(58, 57, 57);
+  --blade-bg: rgba(240, 69, 69, 0.966);
+  --blade-border: rgb(245, 33, 33);
+  --blade-shadow1: rgba(221, 9, 9, 0.37);
+  --blade-shadow2: rgba(221, 9, 9, 0.35);
+  --blade-shadow3: rgba(221, 9, 9, 0.3);
+  --blade-shadow4: rgba(221, 9, 9, 0.25);
+  --blade-shadow5: rgba(221, 9, 9, 0.2);
+  --blade-shadow6: rgba(221, 9, 9, 0.15);
+}
 @font-face {
   font-family: 'star_jediregular';
   src: url('fonts/starjedi-webfont.woff2') format('woff2'),
@@ -15,16 +47,14 @@
 
 body {
   font-family: 'Heebo', sans-serif;
-  background-color: rgb(243, 243, 243);
-  color: rgb(255, 16, 16);
+  background-color: var(--bg-color);
+  color: var(--font-color);
   text-shadow: 1px 1px 2px rgba(107, 102, 102, 0.192);
   text-align: center;
 }
 h3 {
   font-family: 'Geostar Fill', cursive;
   font-size: 20pt;
-  font-weight: bold;
-  text-decoration: underline;
 }
 
 input {
@@ -44,48 +74,114 @@ input {
 }
 
 .column {
-  background-color: white;
+  background-color: var(--column-color);
   padding: 1vh;
   justify-content: center;
   border-radius: 5px;
   width: 17rem;
 }
 
+.col-head {
+  border: 2px solid rgba(0, 102, 255, 0.123);
+  border-radius: 5px;
+  height: 13rem;
+  margin-bottom: 8px;
+}
+
 .entry {
-  background-color: rgb(243, 241, 241);
-  color: rgb(29, 28, 28);
+  background-color: var(--entry-color);
+  color: var(--font-color);
   border-radius: 6px;
   margin-bottom: 15px;
   padding: 7px;
-  -webkit-box-shadow: 0 10px 6px -6px #777;
-  -moz-box-shadow: 0 10px 6px -6px #777;
-  box-shadow: 0 10px 6px -6px #777;
+  -webkit-box-shadow: 0 10px 6px -6px var(--handle-shadow);
+  -moz-box-shadow: 0 10px 6px -6px var(--handle-shadow);
+  box-shadow: 0 10px 6px -6px var(--handle-shadow);
 }
 
 #lightsaber {
   color: rgb(255, 230, 0);
   text-shadow: 1px 1px 2px rgb(107, 102, 102);
   font-family: 'star_jediregular';
-  font-size: 20pt;
+  font-size: 21pt;
   display: flex;
   flex-direction: row;
   margin-bottom: 2rem;
 }
 #handle {
-  background-color: rgb(73, 73, 73);
+  background-color: var(--handle-color);
   flex: 1;
   text-align: center;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 7px;
+  box-shadow: 0 10px 6px -6px var(--handle-shadow);
 }
 #blade {
-  background-color: rgb(247, 20, 20);
+  background-color: var(--blade-bg);
   flex: 3;
+  border: 2px solid var(--blade-border);
+  border-left: none;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
-  box-shadow: 0 2.8px 2.2px rgba(182, 34, 34, 0.034),
-    0 6.7px 5.3px rgba(145, 20, 20, 0.363),
-    0 12.5px 10px rgba(197, 17, 17, 0.06),
-    0 22.3px 17.9px rgba(211, 13, 13, 0.363),
-    0 41.8px 33.4px rgba(170, 8, 8, 0.086), 0 100px 80px rgba(236, 12, 12, 0.12);
+  box-shadow: 0 2.8px 2.2px var(--blade-shadow1),
+    0 6.7px 5.3px var(--blade-shadow2), 0 12.5px 10px var(--blade-shadow3),
+    0 22.3px 17.9px var(--blade-shadow4), 0 41.8px 33.4px var(--blade-shadow5),
+    0 100px 80px var(--blade-shadow6);
 }
+
+/******Styling the Dark Side Slider******/
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: '';
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #dd1616;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/*******^^ Dark Side Slider ^^*****/

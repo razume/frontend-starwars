@@ -1,3 +1,21 @@
+/***********************************DarkSide Button***********************************/
+
+const toggleSwitch = document.querySelector(
+  '.theme-switch input[type="checkbox"]'
+);
+
+function switchTheme(e) {
+  if (e.target.checked) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);
+
+/*********************************^^DarkSide Button^^*********************************/
+
 function formatDate(date) {
   const year = date[0] + date[1] + date[2] + date[3];
   const month = Number(date[5] + date[6]) - 1;
@@ -42,6 +60,7 @@ function renderData(colType, data) {
         `;
   });
   renderStats(colType, data);
+  addLoadMoreButton(colType, data);
 }
 
 function filter(inputType) {
@@ -61,10 +80,18 @@ function renderStats(inputType, data) {
   statsNode.innerText = ` viewing ${count} of ${data.count}`;
 }
 
-function loadMore(inputType, data) {
+function addLoadMoreButton(inputType, data) {
   if (data.count > 10) {
-    // insert a button
+    const moreData = document.createElement('BUTTON');
+    const buttonLabel = document.createTextNode('Load More');
+    moreData.appendChild(buttonLabel);
+    document.querySelector(`#more-${inputType}`).appendChild(moreData);
   }
+}
+
+function loadMore() {
+  // when a load more button is clicked,
+  // fetch(data.next), then render it
 }
 
 async function fetchData() {
