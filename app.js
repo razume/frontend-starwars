@@ -16,6 +16,13 @@ toggleSwitch.addEventListener('change', switchTheme, false);
 
 /*********************************^^DarkSide Button^^*********************************/
 
+/************************************************************************************
+ * FUNCTION NAME: formatData                                                        *
+ * PARAMETERS: 1 -> a date of type string, in YYYY-MM-DD format                     *
+ * DESCRIPTION: converts a date string in YYYY-MM-DD and changes it to              *
+ *              a nicer looking MONTH DAY, YEAR format                              *
+ ************************************************************************************/
+
 function formatDate(date) {
   const year = date[0] + date[1] + date[2] + date[3];
   const month = Number(date[5] + date[6]) - 1;
@@ -37,6 +44,14 @@ function formatDate(date) {
   const newDate = `${months[month]} ${day}, ${year}`;
   return newDate;
 }
+
+/************************************************************************************
+ * FUNCTION NAME: renderData                                                        *
+ * PARAMETERS: 2 -> colType: a string that descibes the type of column, data: SWAPI *
+ *             data in JSON format                                                  *
+ * DESCRIPTION: renders all JSON data to the browser screen                         *
+ ************************************************************************************/
+
 function renderData(colType, data) {
   let col = document.querySelector(`#${colType}-list`);
   data.results.forEach(datum => {
@@ -63,6 +78,12 @@ function renderData(colType, data) {
   addLoadMoreButton(colType, data);
 }
 
+/************************************************************************************
+ * FUNCTION NAME: filter                                                            *
+ * PARAMETERS: 1 -> inputType: a string that descibes the type of column            *
+ * DESCRIPTION: filters user input -- called onkeyup in index.html                  *
+ ************************************************************************************/
+
 function filter(inputType) {
   const input = document.querySelector(`#${inputType}-input`);
   const inputValue = input.value.toUpperCase();
@@ -74,12 +95,20 @@ function filter(inputType) {
   });
 }
 
+/************************************************************************************
+ * FUNCTION NAME: renderStats                                                       *
+ * PARAMETERS: 2 -> colType: a string that descibes the type of column, data: SWAPI *
+ *             data in JSON format                                                  *
+ * DESCRIPTION: renders length of data array for each data type                     *
+ ************************************************************************************/
+
 function renderStats(inputType, data) {
   const statsNode = document.querySelector(`#${inputType}-stats`);
   const count = document.querySelector(`#${inputType}-list`).childElementCount;
   statsNode.innerText = ` viewing ${count} of ${data.count}`;
 }
 
+// Adds a Load More button if data.length is > 10
 function addLoadMoreButton(inputType, data) {
   if (data.count > 10) {
     const moreData = document.createElement('BUTTON');
@@ -93,6 +122,10 @@ function loadMore() {
   // when a load more button is clicked,
   // fetch(data.next), then render it
 }
+
+/***************************************************************
+ *                 call render functions below                 *
+ ***************************************************************/
 
 async function fetchData() {
   const people = fetch(`http://star-cors.herokuapp.com/people`);
@@ -119,4 +152,5 @@ async function fetchData() {
   renderData('vehicles', vehiclesJSON);
 }
 
+// everything is called with a simple fetchData()
 fetchData();
