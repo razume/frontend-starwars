@@ -1,23 +1,23 @@
 /***********************************DarkSide Button***********************************/
 
 const toggleSwitch = document.querySelector(
-  '.theme-switch input[type="checkbox"]'
+  '.theme-switch input[type="checkbox"]',
 );
 
 function switchTheme(e) {
   if (e.target.checked) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute("data-theme", "dark");
   } else {
-    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.setAttribute("data-theme", "light");
   }
 }
 
-toggleSwitch.addEventListener('change', switchTheme, false);
+toggleSwitch.addEventListener("change", switchTheme, false);
 
 /*********************************^^DarkSide Button^^*********************************/
 
 /************************************************************************************
- * FUNCTION NAME: formatData                                                        *
+ * FUNCTION NAME: formatDate                                                        *
  * PARAMETERS: 1 -> a date of type string, in YYYY-MM-DD format                     *
  * DESCRIPTION: converts a date string in YYYY-MM-DD and changes it to              *
  *              a nicer looking MONTH DAY, YEAR format                              *
@@ -27,18 +27,18 @@ function formatDate(date) {
   const year = date[0] + date[1] + date[2] + date[3];
   const month = Number(date[5] + date[6]) - 1;
   const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'Dececember'
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   const day = date[8] + date[9];
   const newDate = `${months[month]} ${day}, ${year}`;
@@ -54,23 +54,23 @@ function formatDate(date) {
 
 function renderData(colType, data) {
   let col = document.querySelector(`#${colType}-list`);
-  data.results.forEach(datum => {
+  data.results.forEach((datum) => {
     col.innerHTML += `
             <div class="entry">
                 <h4 id="${colType}">${
-      colType === 'films' ? datum.title : datum.name
+      colType === "films" ? datum.title : datum.name
     }</h4>
                 <p>${
-                  colType === 'people'
-                    ? `appeared ${datum.films.length} in films`
-                    : colType === 'films'
-                    ? `released on ${formatDate(datum.release_date)}`
-                    : colType === 'starships'
-                    ? datum.starship_class
-                    : colType === 'vehicles'
-                    ? `Manufactured by ${datum.manufacturer}`
-                    : ''
-                }</p>
+      colType === "people"
+        ? `appeared ${datum.films.length} in films`
+        : colType === "films"
+        ? `released on ${formatDate(datum.release_date)}`
+        : colType === "starships"
+        ? datum.starship_class
+        : colType === "vehicles"
+        ? `Manufactured by ${datum.manufacturer}`
+        : ""
+    }</p>
             </div>
         `;
   });
@@ -87,10 +87,10 @@ function filter(inputType) {
   const input = document.querySelector(`#${inputType}-input`);
   const inputValue = input.value.toUpperCase();
   const nodes = [...document.querySelectorAll(`#${inputType}`)];
-  nodes.forEach(node => {
+  nodes.forEach((node) => {
     node.innerText.toUpperCase().indexOf(inputValue) > -1
-      ? (node.parentNode.style.display = '')
-      : (node.parentNode.style.display = 'none');
+      ? (node.parentNode.style.display = "")
+      : (node.parentNode.style.display = "none");
   });
 }
 
@@ -107,16 +107,22 @@ function renderStats(inputType, data) {
   statsNode.innerText = ` viewing ${count} of ${data.count}`;
 }
 
-// Adds a Load More button if data.length is > 10
+/************************************************************************************
+ * FUNCTION NAME: addLoadMoreButton                                                 *
+ * PARAMETERS: 2 -> inputType: a string that descibes the type of column, data:     *
+ *                  SWAPI data in JSON format                                       *
+ * DESCRIPTION: adds a "Load More" button that loads additional data                *
+ ************************************************************************************/
+
 function addLoadMoreButton(inputType, data) {
   const count = document.querySelector(`#${inputType}-list`).childElementCount;
   if (data.count > 10 && count < data.count) {
     const moreDataButton = document.querySelector(`#more-${inputType}`);
-    moreDataButton.style.display = 'block';
+    moreDataButton.style.display = "block";
     document
       .querySelector(`#more-${inputType}`)
-      .addEventListener('click', () => {
-        fetchByURL(data.next).then(nextData => {
+      .addEventListener("click", () => {
+        fetchByURL(data.next).then((nextData) => {
           data = nextData;
           renderData(inputType, data);
         });
@@ -151,17 +157,16 @@ async function fetchData() {
   const filmsJSON = await filmsResponse.json();
   const starshipsJSON = await starshipsResponse.json();
   const vehiclesJSON = await vehiclesResponse.json();
-  console.log(starshipsJSON);
 
-  renderData('people', peopleJSON);
-  renderData('films', filmsJSON);
-  renderData('starships', starshipsJSON);
-  renderData('vehicles', vehiclesJSON);
+  renderData("people", peopleJSON);
+  renderData("films", filmsJSON);
+  renderData("starships", starshipsJSON);
+  renderData("vehicles", vehiclesJSON);
 
-  addLoadMoreButton('people', peopleJSON);
-  addLoadMoreButton('films', filmsJSON);
-  addLoadMoreButton('starships', starshipsJSON);
-  addLoadMoreButton('vehicles', vehiclesJSON);
+  addLoadMoreButton("people", peopleJSON);
+  addLoadMoreButton("films", filmsJSON);
+  addLoadMoreButton("starships", starshipsJSON);
+  addLoadMoreButton("vehicles", vehiclesJSON);
 }
 
 // everything is called with fetchData()
